@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Navbar styles */
+.navbar-logo {
+  padding: 15px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+.navbar-mainbg {
+  background-color: #5161ce;
+  padding: 0px;
+}
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-item.active .nav-link {
+  color: #5161ce;
+  background-color: #fff;
+}
+.hori-selector {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  transition: 0.3s;
+}
+.hori-selector .right,
+.hori-selector .left {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  bottom: 10px;
+}
+.hori-selector .right:before,
+.hori-selector .left:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #5161ce;
+  border-radius: 50%;
+}
+.hori-selector .right {
+  right: -25px;
+}
+.hori-selector .left {
+  left: -25px;
+}
+.hori-selector .right:before {
+  right: -25px;
+  bottom: 0;
+}
+.hori-selector .left:before {
+  left: -25px;
+  bottom: 0;
+}
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+/* Form card styles */
+.form-container .card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 1rem;
+  max-width: 500px;
+  margin: auto;
+}
+.form-container .form-control,
+.form-container .form-control-file {
+  border-radius: 0.5rem;
+}
+.form-container .btn-primary {
+  background-color: #5161ce;
+  border: none;
+}
+
+/* Background and basic reset */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: url("/background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Overlay for blur and color tint */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form container */
+.container {
+  text-align: center;
+  color: #ffffff;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Form styling */
+.form-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 0.8rem 0 0.3rem;
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+button {
+  background-color: #22d3ee;
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+label {
+  color: black;
+}
+
+button:hover {
+  background-color: #06b6d4;
+}
