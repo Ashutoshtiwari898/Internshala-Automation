@@ -34,4 +34,4 @@ Automated job search, application submission, and status tracking on Internshala
 
 ## For Support, Contact:
 
-- Email: meayushsriv@gmail.com
+- Email: 9895145@gmail.com
