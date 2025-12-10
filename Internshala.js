@@ -8,6 +8,7 @@ async function runPuppeteerLogic({ email, password, resumeSummary, apiKey }) {
       "--no-sandbox",
       "--disable-setuid-sandbox",
     ],
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH, // ✅ important for Render
   });
 
   const page = await browser.newPage();
