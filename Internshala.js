@@ -3,27 +3,23 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 async function runPuppeteerLogic({ email, password, resumeSummary, apiKey }) {
   const browser = await puppeteer.launch({
-    headless: "new", // or true
+    headless: "new",
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
     ],
-    // remove start-maximized & defaultViewport for server
   });
 
   const page = await browser.newPage();
+
   await page.goto("https://internshala.com/login/student", {
     waitUntil: "networkidle2",
   });
 
-  // ... rest of your code stays SAME ...
-}
-module.exports = { runPuppeteerLogic };
-
-
   await page.type("input[id='email']", email, { delay: 50 });
   await page.type("input[id='password']", password, { delay: 50 });
   await page.click("button[id='login_submit']");
+
   await page.waitForNavigation({ waitUntil: "networkidle2" });
 
   await page.goto("https://internshala.com/internships/matching-preferences/", {
@@ -43,6 +39,7 @@ module.exports = { runPuppeteerLogic };
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   let applied = 0;
+
   for (const link of internshipLinks.slice(0, 5)) {
     try {
       await page.goto(link, { waitUntil: "networkidle2" });
@@ -60,11 +57,12 @@ module.exports = { runPuppeteerLogic };
         await page.waitForSelector(
           "textarea, #cover_letter_holder .ql-editor",
           {
-            timeout: 10000, // Increase timeout if needed
+            timeout: 10000,
           }
         );
+
         textAreas = await page.$$(
-          `textarea[placeholder='Enter text ...'], #cover_letter_holder .ql-editor`
+          "textarea[placeholder='Enter text ...'], #cover_letter_holder .ql-editor"
         );
       } catch (err) {
         console.warn("❗ No text areas found, proceeding to submit.");
