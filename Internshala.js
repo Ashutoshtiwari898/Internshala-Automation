@@ -3,15 +3,23 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 async function runPuppeteerLogic({ email, password, resumeSummary, apiKey }) {
   const browser = await puppeteer.launch({
-    headless: false,
-    args: ["--start-maximized"],
-    defaultViewport: null,
+    headless: "new", // or true
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+    ],
+    // remove start-maximized & defaultViewport for server
   });
 
   const page = await browser.newPage();
   await page.goto("https://internshala.com/login/student", {
     waitUntil: "networkidle2",
   });
+
+  // ... rest of your code stays SAME ...
+}
+module.exports = { runPuppeteerLogic };
+
 
   await page.type("input[id='email']", email, { delay: 50 });
   await page.type("input[id='password']", password, { delay: 50 });
