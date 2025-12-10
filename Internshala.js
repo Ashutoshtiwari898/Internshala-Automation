@@ -14,16 +14,29 @@ async function runPuppeteerLogic({ email, password, resumeSummary, apiKey }) {
 
   await page.goto("https://internshala.com/login/student", {
     waitUntil: "networkidle2",
+    timeout: 60000,
   });
 
   await page.type("input[id='email']", email, { delay: 50 });
   await page.type("input[id='password']", password, { delay: 50 });
+
+  // Click login
   await page.click("button[id='login_submit']");
 
-  await page.waitForNavigation({ waitUntil: "networkidle2" });
+  // Try to wait for navigation, but don't crash if it times out
+  try {
+    await page.waitForNavigation({
+      waitUntil: "networkidle2",
+      timeout: 60000,
+    });
+  } catch (err) {
+    console.warn("⚠️ Login navigation timeout, continuing anyway:", err.message);
+  }
 
+  // Go to matching preferences page directly
   await page.goto("https://internshala.com/internships/matching-preferences/", {
     waitUntil: "networkidle2",
+    timeout: 60000,
   });
 
   const internshipLinks = await page.$$eval(".individual_internship", (cards) =>
@@ -42,7 +55,7 @@ async function runPuppeteerLogic({ email, password, resumeSummary, apiKey }) {
 
   for (const link of internshipLinks.slice(0, 5)) {
     try {
-      await page.goto(link, { waitUntil: "networkidle2" });
+      await page.goto(link, { waitUntil: "networkidle2", timeout: 60000 });
 
       const applyNowButton = await page.$("button#top_easy_apply_button");
       if (applyNowButton) {
